@@ -1,0 +1,248 @@
+
+
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Портфоліо Анна Андрощук</title>
+    <style>
+        /* Загальні стилі */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5f0e6; /* світлий беж */
+            color: #3b2f2f;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            background: #e0d4c1; /* бежевий фон */
+            padding: 40px 10%;
+            flex-wrap: wrap;
+            animation: fadeDown 1s ease;
+        }
+
+        .header img {
+            width: 200px;
+            border-radius: 10px;
+            border: 3px solid #3b2f2f;
+}
+
+        .header-text h1 {
+            font-size: 40px;
+            font-family: cursive;
+        }
+
+        .header-text p {
+            margin-bottom: 10px;
+        }
+
+        /* NAVIGATION */
+        nav {
+            text-align: center;
+            background: #d6c2a8;
+            padding: 10px;
+        }
+
+        nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #3b2f2f;
+            font-weight: bold;
+        }
+
+        /* SECTIONS */
+        section {
+            margin: 30px 10%;
+            padding: 20px;
+            background: #f2e6d9;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .section h2 {
+            background: #e0d4c1;
+            padding: 10px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #d6c2a8;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        /* Анімації при скролі */
+        .hidden { opacity: 0; transform: translateY(40px); }
+        .show { opacity: 1; transform: translateY(0); transition: all 0.8s ease; }
+
+        section:hover { transform: scale(1.02); }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Адаптивність */
+        @media (max-width: 768px) {
+            header { flex-direction: column; text-align: center; }
+        }
+/* SLIDER */
+.slider {
+    position: relative;
+    max-width: 500px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.slides img {
+    width: 100%;
+    display: none;
+    border-radius: 10px;
+}
+
+.slides img.active {
+    display: block;
+}
+
+/* Кнопки */
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #3b2f2f;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <img src="Фото/anna.jpg" alt="Фото">
+        <div class="header-text">
+            <p>Моє портфоліо</p>
+            <h1>Андрощук Анна</h1>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#about">Про мене</a>
+  <a href="#skills">Навички</a>
+        <a href="#achievements">Досягнення</a>
+    </nav>
+
+    <!-- ABOUT -->
+    <section id="about" class="section hidden">
+        <h2>👀 Про мене</h2>
+        <p>
+            Мене звати Анна Андрощук. Я відповідальна, уважна до деталей та прагну до постійного розвитку.
+            Маю хороші аналітичні здібності, швидко навчаюся новому та вмію працювати як самостійно, так і в команді.
+        </p>
+    </section>
+
+
+    <!-- SKILLS -->
+    <section id="skills" class="section hidden">
+        <h2>🛠 Навички</h2>
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Адаптивний красивий дизайн</li>
+            <li>Робота з API</li>
+            <li>Анімації та інтерактивність</li>
+        </ul>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements" class="section hidden">
+        <h2>🏆 Досягнення</h2>
+        <ul>
+            <li>Розробка сайтів</li>
+            <li>Створення інтерактивних елементів на JavaScript</li> 
+<li>Успішне виконання навчальних проєктів</li>
+        </ul>
+    </section>
+<!-- SLIDER -->
+<section class="section hidden">
+    <h2>📸 Мої роботи</h2>
+
+    <div class="slider">
+        <button class="prev">❮</button>
+
+        <div class="slides">
+            <img src="Фото/фото 1.jpg" class="slide active">
+            <img src="Фото/фото 2.jpg" class="slide">
+            <img src="Фото/фото 3.jpg" class="slide">
+        </div>
+
+        <button class="next">❯</button>
+    </div>
+</section>
+    <footer>
+        © 2026 Андрощук Анна
+    </footer>
+
+    <script>
+        // Анімація при скролі
+        const sections = document.querySelectorAll('.section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('show');
+                    entry.target.classList.remove('hidden');
+                }
+            });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+// SLIDER
+const slides = document.querySelectorAll('.slide');
+let index = 0;
+
+document.querySelector('.next').onclick = () => {
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
+};
+
+document.querySelector('.prev').onclick = () => {
+    slides[index].classList.remove('active');
+    index = (index - 1 + slides.length) % slides.length;
+    slides[index].classList.add('active');
+};
+    </script>
+</body>
+</html>     
